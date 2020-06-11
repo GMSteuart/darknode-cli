@@ -181,6 +181,7 @@ func main() {
 		// Remove the timestamp for error message
 		log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
 		color.Red(err.Error())
+		os.Exit(1)
 	}
 }
 
