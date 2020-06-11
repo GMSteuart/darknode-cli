@@ -6,12 +6,14 @@ jobs:
         steps:
             - name: Check out code
               uses: actions/checkout@v2
-            - name: Build and install the darknode-cli
+            - name: Initialization
               run: |
                   mkdir -p $HOME/.darknode/bin
+                  echo "::add-path::$HOME/.darknode/bin"
+            - name: Build and install the darknode-cli
+              run: |
                   make
                   mv $(make target_name) $HOME/.darknode/bin/darknode
-                  export PATH=$PATH:$HOME/.darknode/bin
                   darknode --version
             - name: Test darknode deployment
               env:
