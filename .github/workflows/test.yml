@@ -9,6 +9,7 @@ jobs:
             - name: Initialization
               run: |
                   mkdir -p $HOME/.darknode/bin
+                  mkdir -p $HOME/.darknode/darknodes
                   echo "::add-path::$HOME/.darknode/bin"
             - name: Build and install the darknode-cli
               run: |
