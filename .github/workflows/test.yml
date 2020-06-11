@@ -13,6 +13,12 @@ jobs:
                   mv $(make target_name) $HOME/.darknode/bin/darknode
                   export PATH=$PATH:$HOME/.darknode/bin
                   darknode --version
+            - name: Test darknode deployment
+              env:
+                  aws_access_key : ${{ secrect.AWS_ACCESS_KEY_ID}}
+                  aws_secret_key : ${{ secrect.AWS_SECRET_ACCESS_KEY}}
+              run: |
+                  ./test/up.sh
 
 
 
