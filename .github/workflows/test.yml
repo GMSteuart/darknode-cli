@@ -6,10 +6,11 @@ jobs:
         steps:
             - name: install the darknode-cli
               run: |
+                  pwd
                   echo $HOME
                   echo $PATH
                   curl https://www.github.com/renproject/darknode-cli/releases/latest/download/install.sh -sSfL | sh
-                  ls -la ./darknode
+                  pwd
 
 
 
