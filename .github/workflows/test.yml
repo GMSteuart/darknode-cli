@@ -4,14 +4,16 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
-            - name: install the darknode-cli
+            - name: Check out code
+              uses: actions/checkout@v2
+            - name: Build and install the darknode-cli
               run: |
-                  pwd
-                  echo $HOME
-                  echo $PATH
-                  curl https://www.github.com/renproject/darknode-cli/releases/latest/download/install.sh -sSfL | sh
+                  mkdir -p $HOME/.darknode/bin
+                  make
+                  mv $(make target_name) $HOME/.darknode/bin/darknode
                   export PATH=$PATH:$HOME/.darknode/bin
                   darknode --version
+
 
 
 
