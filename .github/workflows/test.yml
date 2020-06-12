@@ -1,5 +1,6 @@
 name: test
 on: [push]
+
 jobs:
     aws:
         runs-on: ${{ matrix.os }}
@@ -21,6 +22,7 @@ jobs:
                   darknode --version
             - name: Test darknode deployment
               env:
+                  ACCESS_TOKEN   : ${{ secrets.ACCESS_TOKEN }}
                   aws_access_key : ${{ secrets.AWS_ACCESS_KEY_ID}}
                   aws_secret_key : ${{ secrets.AWS_SECRET_ACCESS_KEY}}
               run: |
@@ -46,7 +48,8 @@ jobs:
                   darknode --version
             - name: Test darknode deployment
               env:
-                do_token: ${{ secrets.DO_TOKEN}}
+                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                  do_token: ${{ secrets.DO_TOKEN}}
               run: |
                   chmod +x ./test/do.sh
                   ./test/do.sh
