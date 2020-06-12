@@ -49,5 +49,6 @@ darknode up --aws --name testing-aws --aws-access-key  $aws_access_key --aws-sec
 if [ "$?" -eq "0" ]; then
     exit "failed to pass test when providing invalid instance"
 fi
+darknode down testing-aws -f
 
 echo "All AWS tests passed!"
