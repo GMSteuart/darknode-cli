@@ -34,7 +34,7 @@ jobs:
                   aws_secret_key : ${{ secrets.AWS_SECRET_ACCESS_KEY}}
               run: |
                   chmod +x ./test/aws.sh
-                  ./test/aws.sh
+                  ./test/aws.sh ${{ matrix.os }}
     do:
         runs-on: ${{ matrix.os }}
         strategy:
@@ -66,7 +66,7 @@ jobs:
                   do_token: ${{ secrets.DO_TOKEN}}
               run: |
                   chmod +x ./test/do.sh
-                  ./test/do.sh
+                  ./test/do.sh ${{ matrix.os }}
 #    gcp:
 #        runs-on: ${{ matrix.os }}
 #        strategy:
