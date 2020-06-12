@@ -26,28 +26,27 @@ jobs:
               run: |
                   chmod +x ./test/aws.sh
                   ./test/aws.sh
-#    do:
-#        runs-on: ${{ matrix.os }}
-#        strategy:
-#            matrix:
-#                os: [ubuntu-latest, macos-latest]
-#        steps:
-#            - name: Check out code
-#              uses: actions/checkout@v2
-#            - name: Initialization
-#              run: |
-#                  mkdir -p $HOME/.darknode/bin
-#                  mkdir -p $HOME/.darknode/darknodes
-#                  echo "::add-path::$HOME/.darknode/bin"
-#            - name: Build and install the darknode-cli
-#              run: |
-#                  make
-#                  mv $(make target_name) $HOME/.darknode/bin/darknode
-#                  darknode --version
-#            - name: Test darknode deployment
-#              env:
-#                aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID}}
-#                aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-#              run: |
-#                  chmod +x ./test/up.sh
-#                  ./test/up.sh
+    do:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v2
+            - name: Initialization
+              run: |
+                  mkdir -p $HOME/.darknode/bin
+                  mkdir -p $HOME/.darknode/darknodes
+                  echo "::add-path::$HOME/.darknode/bin"
+            - name: Build and install the darknode-cli
+              run: |
+                  make
+                  mv $(make target_name) $HOME/.darknode/bin/darknode
+                  darknode --version
+            - name: Test darknode deployment
+              env:
+                do_token: ${{ secrets.DO_TOKEN}}
+              run: |
+                  chmod +x ./test/do.sh
+                  ./test/do.sh
