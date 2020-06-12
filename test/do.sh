@@ -30,7 +30,7 @@ darknode up --do --name testing-do --do-token invalid-token
 if [ "$?" -eq "0" ]; then
     exit "failed to pass test when providing invalid credentials"
 fi
-rm -rf $HOME/.darknode/darknodes/testing
+rm -rf $HOME/.darknode/darknodes/testing-do
 
 # Return error when providing an invalid digital ocean region
 darknode up --do --name testing-do --do-token $do_token --do-region invalid-region
