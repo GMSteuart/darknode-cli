@@ -52,7 +52,7 @@ if [ "$?" -eq "0" ]; then
     echo "failed to pass test when providing invalid credentials"
     exit 1
 fi
-rm -rf $HOME/.darknode/darknodes/testing-aws
+rm -rf "$HOME/.darknode/darknodes/$name"
 
 # Return error when providing an invalid aws region
 darknode up --aws --name $name --aws-access-key  $aws_access_key --aws-secret-key $aws_secret_key --aws-region invalid-region

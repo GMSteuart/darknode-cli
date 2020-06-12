@@ -45,7 +45,7 @@ if [ "$?" -eq "0" ]; then
     echo "failed to pass test when providing invalid credentials"
     exit 1
 fi
-rm -rf $HOME/.darknode/darknodes/testing-do
+rm -rf "$HOME/.darknode/darknodes/$name"
 
 # Return error when providing an invalid digital ocean region
 darknode up --do --name $name --do-token $do_token --do-region invalid-region
