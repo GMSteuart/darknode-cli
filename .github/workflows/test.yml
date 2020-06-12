@@ -35,6 +35,10 @@ jobs:
               run: |
                   chmod +x ./test/aws.sh
                   ./test/aws.sh ${{ matrix.os }}
+            - name: Clean up
+              run: |
+                  darknode down -f testing-aws-${{ matrix.os}}
+
     do:
         runs-on: ${{ matrix.os }}
         strategy:
@@ -67,6 +71,9 @@ jobs:
               run: |
                   chmod +x ./test/do.sh
                   ./test/do.sh ${{ matrix.os }}
+            - name: Clean up
+              run: |
+                  darknode down -f testing-do-${{ matrix.os}}
 #    gcp:
 #        runs-on: ${{ matrix.os }}
 #        strategy:

@@ -60,9 +60,5 @@ if [ "$?" -eq "0" ]; then
     echo "failed to pass test when providing invalid instance"
     exit 1
 fi
-if ! darknode down $name -f; then
-    echo "failed to destroy node"
-    exit 1
-fi
-
+darknode down $name -f
 echo "All DO tests passed!"
