@@ -30,8 +30,8 @@ func main() {
 	app.Usage = "A command-line tool for managing Darknodes."
 	app.Version = binaryVersion
 
-	// Fetch latest release and check if our version is behind.
-	checkUpdates(app.Version)
+	// // Fetch latest release and check if our version is behind.
+	// checkUpdates(app.Version)
 
 	// Define sub-commands
 	app.Commands = []cli.Command{
