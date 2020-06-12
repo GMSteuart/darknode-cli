@@ -59,7 +59,7 @@ func (p providerGcp) Deploy(ctx *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	if !match{
+	if !match {
 		return errors.New("for google cloud, name must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen")
 	}
 

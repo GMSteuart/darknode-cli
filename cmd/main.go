@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	"github.com/google/go-github/github"
 	"github.com/hashicorp/go-version"
 	"github.com/renproject/darknode-cli/cmd/provider"
 	"github.com/renproject/darknode-cli/util"
@@ -30,8 +29,8 @@ func main() {
 	app.Usage = "A command-line tool for managing Darknodes."
 	app.Version = binaryVersion
 
-	// // Fetch latest release and check if our version is behind.
-	// checkUpdates(app.Version)
+	// Fetch latest release and check if our version is behind.
+	checkUpdates(app.Version)
 
 	// Define sub-commands
 	app.Commands = []cli.Command{
@@ -191,7 +190,7 @@ func checkUpdates(curVer string) {
 	// Get latest release
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	client := github.NewClient(nil)
+	client := util.GithubClient(ctx)
 	release, _, err := client.Repositories.GetLatestRelease(ctx, "renproject", "darknode-cli")
 	if err != nil {
 		return
