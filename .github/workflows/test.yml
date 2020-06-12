@@ -15,6 +15,13 @@ jobs:
                   mkdir -p $HOME/.darknode/bin
                   mkdir -p $HOME/.darknode/darknodes
                   echo "::add-path::$HOME/.darknode/bin"
+            - if: matrix.os == 'macos-latest'
+              run: |
+                  curl -s "https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_darwin_amd64.zip" > terraform.zip
+                  unzip terraform
+                  chmod +x terraform
+                  mv terraform $HOME/.darknode/bin/terraform
+                  rm terraform.zip
             - name: Build and install the darknode-cli
               run: |
                   make
